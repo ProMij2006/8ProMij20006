@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Задание 8 — Форма обратной связи</title>
+  
+  
+  <link rel="stylesheet" href="bootstrap.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+  
+  <header class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm mb-4">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Веб-Разработка</a>
+    </div>
+  </header>
+
+  
+  <main class="container my-auto text-center py-4">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="card shadow-sm border-0 p-4">
+          <h1 class="h3 mb-3 fw-normal">Задание №8</h1>
+          <p class="text-secondary mb-4">
+            Нажмите на кнопку ниже, чтобы открыть форму обратной связи в модальном окне.
+          </p>
+          <button id="openFormBtn" type="button" class="btn btn-primary btn-lg shadow-sm">
+            Написать нам
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  
+  <footer class="footer mt-auto py-3 bg-white border-top text-center text-muted fs-7">
+    <div class="container">
+      <small>© 2026 ProMij</small>
+    </div>
+  </footer>
+
+  
+  <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+      <div class="modal-content shadow">
+        
+        <div class="modal-header py-2 bg-light">
+          <h2 class="modal-title fs-6 fw-bold" id="feedbackModalLabel">Обратная связь</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+
+        <div class="modal-body p-3">
+          <div id="statusAlert" class="alert d-none py-2 px-3 mb-2 fs-7" role="alert"></div>
+
+          <form id="feedbackForm" novalidate>
+            <!-- ФИО -->
+            <div class="mb-2">
+              <label for="fullName" class="form-label mb-1 fs-7 fw-semibold">ФИО *</label>
+              <input type="text" class="form-control form-control-sm" id="fullName" name="fullName" required placeholder="Иванов Иван Иванович">
+              <div id="fullNameError" class="invalid-feedback fs-8 d-none">Цифры и спецсимволы вводить нельзя. Пожалуйста, введите корректные ФИО.</div>
+              <div class="invalid-feedback fs-8">Поле обязательно для заполнения.</div>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-2">
+              <label for="email" class="form-label mb-1 fs-7 fw-semibold">Email *</label>
+              <input type="email" class="form-control form-control-sm" id="email" name="email" required placeholder="name@example.com">
+              <div class="invalid-feedback fs-8">Введите корректный Email (например, name@example.com).</div>
+            </div>
+
+            <!-- Телефон -->
+            <div class="mb-2">
+              <label for="phone" class="form-label mb-1 fs-7 fw-semibold">Телефон *</label>
+              <input type="tel" class="form-control form-control-sm" id="phone" name="phone" required placeholder="+7 (999) 000-00-00">
+              <div id="phoneError" class="invalid-feedback fs-8 d-none">Буквы вводить нельзя. Допустимы только цифры и символы +, -, ().</div>
+              <div class="invalid-feedback fs-8">Поле обязательно для заполнения.</div>
+            </div>
+
+            <!-- Организация -->
+            <div class="mb-2">
+              <label for="organization" class="form-label mb-1 fs-7 fw-semibold">Организация</label>
+              <input type="text" class="form-control form-control-sm" id="organization" name="organization" required placeholder="ООО «Компания»">
+            </div>
+
+            <!-- Сообщение -->
+            <div class="mb-2">
+              <label for="message" class="form-label mb-1 fs-7 fw-semibold">Сообщение *</label>
+              <textarea class="form-control form-control-sm" id="message" name="message" rows="2" required placeholder="Введите ваше сообщение..."></textarea>
+              <div class="invalid-feedback fs-8">Поле сообщения обязательно для заполнения.</div>
+            </div>
+
+            <!-- Чекбокс -->
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="consent" name="consent" required>
+              <label class="form-check-label fs-7" for="consent">
+                Согласен с политикой обработки персональных данных *
+              </label>
+              <div class="invalid-feedback fs-8">Необходимо подтвердить согласие.</div>
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" id="submitBtn" class="btn btn-primary btn-sm py-2 fw-semibold">
+                <span id="submitSpinner" class="spinner-border spinner-border-sm d-none me-1" role="status" aria-hidden="true"></span>
+                <span>Отправить</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  
+  <script src="bootstrap.bundle.min.js"></script>
+  
+  <script src="script.js"></script>
+</body>
+</html>
